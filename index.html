@@ -71,7 +71,7 @@
         <div class="hero__content fade-up">
           <p class="hero__location">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Томск, Россия
+            Томск, Россия · Remote
           </p>
           <h1 class="hero__name">Захар Медяник</h1>
           <p class="hero__role">Системный аналитик</p>
@@ -109,7 +109,7 @@
       <div class="container">
         <h2 class="section__title fade-up">О себе</h2>
         <p class="about__text fade-up">
-          Системный аналитик с <strong>4+ годами опыта</strong> в проектировании интеграций (REST API, RabbitMQ, Kafka), разработке технической документации и архитектурном анализе. Запускал продукты с нуля: последний MVP вышел на production <strong>за 6 месяцев</strong> — от сбора требований до настройки CI/CD и управления командой разработки. Умею переводить бизнес-задачи в чёткие технические решения и объяснять их как разработчикам, так и стейкхолдерам.
+          Системный аналитик с <strong>4+ годами опыта</strong> в проектировании интеграций (REST API, RabbitMQ, Kafka), разработке технической документации и архитектурном анализе. Запускал продукты с нуля: последний MVP вышел на production <strong>за 6 месяцев</strong> — от сбора требований до настройки CI/CD и управления командой разработки. Умею переводить бизнес-задачи в чёткие технические решения и объяснять их как разработчикам, так и стейкхолдерам. Ищу позицию, где аналитик реально влияет на архитектурные решения.
         </p>
         <div class="stats">
           <div class="stat-card fade-up">
@@ -207,6 +207,8 @@
             <div class="skill-tags">
               <span class="tag">Git</span>
               <span class="tag">YouGile</span>
+              <span class="tag">Figma</span>
+              <span class="tag">Confluence</span>
             </div>
           </div>
 
@@ -258,6 +260,7 @@
                   <li>Спроектировал структуры данных и <strong>SQL-запросы для аналитических отчётов в PostgreSQL</strong> — метрики по чатам, конверсия по виджетам, загрузка операторов</li>
                   <li><strong>Сформировал и управлял командой из 3 разработчиков</strong> для реализации проекта</li>
                   <li><strong>Внедрил CI/CD-пайплайны</strong> (Dokploy + GitHub Actions) — автоматизировал процесс деплоя, сократил время выкатки обновлений</li>
+                  <li>Настроил <strong>контейнеризацию всех приложений через Docker</strong>, обеспечив стабильность работы на production</li>
                 </ul>
               </div>
             </div>
@@ -286,10 +289,12 @@
               <ul class="exp-card__tasks">
                 <li>Сбор требований и разработка технического задания</li>
                 <li>Проектирование архитектуры CRM-системы: BPMN и UML-диаграммы</li>
+                <li>Проектирование интеграций чат-платформы с внешними сервисами (CRM, базы знаний) через REST API и RabbitMQ</li>
                 <li>Полный пакет технической документации: API-контракты, модели данных</li>
-                <li>Проектирование асинхронного взаимодействия через RabbitMQ</li>
-                <li>Планирование спринтов, User Story и Use Case</li>
-                <li>Контейнеризация через Docker, ручное тестирование</li>
+                <li>Консультирование команды разработки по вопросам архитектуры и реализации функционала</li>
+                <li>Планирование спринтов в YouGile, User Story и Use Case</li>
+                <li>Организация размещения системы на продакшн-сервере с нуля, контейнеризация через Docker</li>
+                <li>Ручное тестирование UI/UX и адаптивной вёрстки, продвижение продукта (контент-план, статьи, презентации)</li>
               </ul>
               <div class="exp-card__results">
                 <p class="exp-card__results-title">🎯 Результаты</p>
@@ -352,10 +357,52 @@
             <div class="exp-card">
               <div class="exp-card__header">
                 <div>
+                  <h3 class="exp-card__role">Бизнес-аналитик</h3>
+                  <p class="exp-card__company">ООО «Встречаем Бизнес»</p>
+                </div>
+                <span class="exp-card__period">12.2022 — 01.2024 · 1 год 2 мес</span>
+              </div>
+              <p class="exp-card__context">Платформа мэтчинга стартаперов, менторов и инвесторов.</p>
+              <div class="exp-card__stack">
+                <span class="tag tag--sm">BPMN</span>
+                <span class="tag tag--sm">UML</span>
+                <span class="tag tag--sm">REST</span>
+                <span class="tag tag--sm">SQL</span>
+                <span class="tag tag--sm">PostgreSQL</span>
+                <span class="tag tag--sm">Swagger</span>
+                <span class="tag tag--sm">User Story</span>
+                <span class="tag tag--sm">Git</span>
+                <span class="tag tag--sm">Figma</span>
+                <span class="tag tag--sm">Confluence</span>
+              </div>
+              <ul class="exp-card__tasks">
+                <li>Сбор и анализ требований от стейкхолдеров (основатели, инвесторы): интервью, декомпозиция на функциональные блоки, разработка ТЗ</li>
+                <li>Описание бизнес-процессов платформы в BPMN: регистрация и верификация пользователей, алгоритм мэтчинга, сценарии стартапер–ментор–инвестор</li>
+                <li>Разработка UML-диаграмм (Use Case, Sequence, Activity): поиск и фильтрация профилей, установка контакта, чат</li>
+                <li>Проектирование структуры данных для профилей (стартапер/ментор/инвестор): сущности, атрибуты, связи; SQL-запросы по фильтрам</li>
+                <li>Описание REST API-контрактов для мобильного клиента: эндпоинты профилей, мэтчинга и уведомлений</li>
+              </ul>
+              <div class="exp-card__results">
+                <p class="exp-card__results-title">🎯 Результаты</p>
+                <ul>
+                  <li><strong>Формализовал требования к продукту с нуля</strong> — собрал полный пакет документации (ТЗ, User Story, API-контракты, модели данных)</li>
+                  <li>Описал <strong>бизнес-процессы платформы в BPMN и UML</strong>, обеспечив прозрачность архитектуры для команды разработки</li>
+                  <li><strong>Участвовал в демо для потенциальных инвесторов</strong> — опыт представления продукта бизнес-аудитории</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Job 5 -->
+          <div class="timeline__item fade-up" style="animation-delay:.35s">
+            <div class="timeline__dot"></div>
+            <div class="exp-card">
+              <div class="exp-card__header">
+                <div>
                   <h3 class="exp-card__role">Преподаватель программирования</h3>
                   <p class="exp-card__company">Частная практика</p>
                 </div>
-                <span class="exp-card__period">01.2022 — 02.2024 · 2 года</span>
+                <span class="exp-card__period">01.2022 — 02.2023 · 1 год</span>
               </div>
               <ul class="exp-card__tasks">
                 <li>Групповые и индивидуальные занятия по Python: от базовых концепций до веб-сайтов и Telegram-ботов</li>
@@ -394,6 +441,12 @@
             <span class="edu-card__period">2020 — 2024</span>
           </div>
 
+        </div>
+
+        <h3 class="edu__subtitle fade-up">🌐 Языки</h3>
+        <div class="lang-tags fade-up">
+          <span class="tag">Русский — родной</span>
+          <span class="tag">Английский — B1 (Intermediate)</span>
         </div>
       </div>
     </section>
