@@ -1,114 +1,56 @@
-/* =============================================================
-   script.js — Анимации и интерактивность
-   ============================================================= */
+const themeToggle = document.getElementById('themeToggle');
 
-/* ── Theme toggle ── */
-(function () {
-  const btn  = document.getElementById('themeToggle');
-  const body = document.body;
-  const KEY  = 'theme';
+function setTheme(theme) {
+  const isLight = theme === 'light';
+  document.body.classList.toggle('light', isLight);
+  themeToggle.setAttribute('aria-label', isLight ? 'Включить тёмную тему' : 'Включить светлую тему');
+  themeToggle.title = themeToggle.getAttribute('aria-label');
+}
 
-  // Apply saved preference immediately (before paint)
-  if (localStorage.getItem(KEY) === 'light') body.classList.add('light');
+try {
+  setTheme(localStorage.getItem('theme'));
+} catch {
+  setTheme('dark');
+}
 
-  if (!btn) return;
-
-  btn.addEventListener('click', () => {
-    const isLight = body.classList.toggle('light');
-    localStorage.setItem(KEY, isLight ? 'light' : 'dark');
-  });
-})();
-
-
-/* ── Typewriter effect ── */
-(function () {
-  const text = 'Проектирую интеграции и архитектуры, которые работают в продакшне';
-  const el = document.getElementById('tagline');
-  if (!el) return;
-
-  let i = 0;
-  function type() {
-    if (i < text.length) {
-      el.textContent += text[i++];
-      setTimeout(type, Math.random() * 40 + 28); // human-like speed
-    }
+themeToggle.addEventListener('click', () => {
+  const theme = document.body.classList.contains('light') ? 'dark' : 'light';
+  setTheme(theme);
+  try {
+    localStorage.setItem('theme', theme);
+  } catch {
+    // The theme still works when local storage is unavailable.
   }
-  // Start after short delay so user sees the cursor first
-  setTimeout(type, 600);
-})();
+});
 
+const burger = document.getElementById('burger');
+const menu = document.getElementById('mobileMenu');
+const mobileLayout = window.matchMedia('(max-width: 48rem)');
 
-/* ── Navbar: scrolled class + scroll-spy ── */
-(function () {
-  const navbar = document.getElementById('navbar');
-  function onScroll() {
-    if (window.scrollY > 20) navbar.classList.add('scrolled');
-    else navbar.classList.remove('scrolled');
+function setMenuOpen(open) {
+  menu.hidden = !open;
+  burger.setAttribute('aria-expanded', String(open));
+}
+
+burger.addEventListener('click', () => setMenuOpen(menu.hidden));
+
+menu.addEventListener('click', (event) => {
+  if (event.target.closest('a')) {
+    setMenuOpen(false);
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
+});
 
-
-/* ── Burger / Mobile menu ── */
-(function () {
-  const burger = document.getElementById('burger');
-  const menu   = document.getElementById('mobileMenu');
-  if (!burger || !menu) return;
-
-  function close() {
-    menu.classList.remove('open');
-    burger.setAttribute('aria-expanded', 'false');
+document.addEventListener('click', (event) => {
+  if (!menu.hidden && !menu.contains(event.target) && !burger.contains(event.target)) {
+    setMenuOpen(false);
   }
+});
 
-  burger.addEventListener('click', () => {
-    const open = menu.classList.toggle('open');
-    burger.setAttribute('aria-expanded', String(open));
-  });
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && !menu.hidden) {
+    setMenuOpen(false);
+    burger.focus();
+  }
+});
 
-  // Close on link click
-  menu.querySelectorAll('.mobile-menu__link').forEach(link => {
-    link.addEventListener('click', close);
-  });
-
-  // Close on outside click
-  document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target) && !burger.contains(e.target)) close();
-  });
-})();
-
-
-/* ── Intersection Observer: fade-up ── */
-(function () {
-  const items = document.querySelectorAll('.fade-up');
-  if (!items.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-  );
-
-  items.forEach(el => observer.observe(el));
-})();
-
-
-/* ── Smooth anchor scroll (fallback for older browsers) ── */
-(function () {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (!target) return;
-      e.preventDefault();
-      const offset = 70; // navbar height
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    });
-  });
-})();
+mobileLayout.addEventListener('change', () => setMenuOpen(false));
